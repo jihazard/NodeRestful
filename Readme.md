@@ -1,5 +1,5 @@
 # REST 란?
-* Representaional State Transfer
+* REpresentaional State Transfer
 * 데이터를 주고받을 때 필요한 스팩 
 * 표면적인 실체는 스타일 또는 패턴
 
@@ -32,12 +32,12 @@
     - /cars?stat=active
 
     예제 
-    | URL                  | METHOD               | 설명          |
+    | URL                  | METHOD               | 설명                 |
     | :------------------- | -------------------: |:---------------:|
-    | /movies        | GET | 모든영화리스트가져오기 |
-    | /movies        | POST | 영화추가 |
-    | /movies:title  | GET | 해당영화 가져오기 |
-    | /movies:title  | DEL | 해당영화 삭제하기 |
-    | /movies:title  | PUT | 해당영화 업데이트하기 |
-    | /movies?min=9  | GET | 상영중인 영화리스트 |
+    | /movies              | GET                  | 모든영화리스트가져오기 |
+    | /movies              | POST                 | 영화추가       |
+    | /movies:title        | GET                  | 해당영화 가져오기 |
+    | /movies:title        | DEL                  | 해당영화 삭제하기 |
+    | /movies:title        | PUT                  | 해당영화 업데이트하기 |
+    | /movies?min=9        | GET                  | 상영중인 영화리스트 |
     
