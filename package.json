@@ -1,0 +1,30 @@
+{
+  "name": "restful",
+  "version": "1.0.0",
+  "description": "* REpresentaional State Transfer\r * 데이터를 주고받을 때 필요한 스팩 \r * 표면적인 실체는 스타일 또는 패턴",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jihazard/NodeRestful.git"
+  },
+  "keywords": [
+    "yes"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jihazard/NodeRestful/issues"
+  },
+  "homepage": "https://github.com/jihazard/NodeRestful#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.0"
+  }
+}
