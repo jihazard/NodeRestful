@@ -60,6 +60,7 @@
                 case "all": sendAjax(URL,"GET",null); break;
                 case "add": sendAjax(URL,"POST",param);break;
                 case "del": sendAjax(URL+"/"+title,"DELETE",null);break;
+                case "search":sendAjax(URL+"/"+title,"GET",null);break;
             }
 
         }
@@ -72,13 +73,11 @@
             return obj;       
         }
         function sendAjax(url,method,param){
-            console.log("넘오온 파람은?" + param)
             let options = {}
             options.method=method;
             options.headers={"Content-type":"application/json"};
             if(param) options.body=JSON.stringify(param)
-        
-        
+                
             fetch(url, options).then(res=>res.json()).then(function(data){
                 console.log(data)      
             })

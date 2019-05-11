@@ -69,6 +69,25 @@ router.delete("/:title",function(req,res){
     })
 })
 
+router.get("/:title",function(req,res){
+    let obj = {};
+    const title = req.params.title
+    console.log(title)
+    let query = connection.query("select * from movie where title = ? " , [title] ,function(err,rows){
+        console.log(" movie / search " + JSON.stringify(rows) )
+        if(err) throw err
+        if(rows.length){
+            obj.result="1"
+            obj.data=rows
+        }else{
+            obj.result="0"
+            
+        }
+        res.json(obj)
+    })
+})
+
+
 
 
 
