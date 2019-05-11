@@ -5,6 +5,11 @@ var router = express.Router();
 var path = require('path')
 var mysql = require('mysql')
 
+var bodyparser = require('body-parser')
+
+app.use(bodyparser.json())
+app.use(bodyparser.urlencoded({extended:true}))
+
 var connection = mysql.createConnection({
     host:"yoonjh238.iptime.org",
     port:63306,
@@ -52,12 +57,12 @@ router.post("/" ,function(req,res){
     })
 })
 
-router.delete("/" ,function(req,res){
+router.delete("/:title",function(req,res){
    
     let obj = {};
-    const deleteTitle = req.body.title;
-    console.log(deleteTitle)
-    let query = connection.query("delete from movie where title = ? " , [deleteTitle] ,function(err,rows){
+    const title = req.params.title
+    console.log(title)
+    let query = connection.query("delete from movie where title = ? " , [title] ,function(err,rows){
         console.log(" movie / delete " + JSON.stringify(rows) )
         if(err) throw err
         else{

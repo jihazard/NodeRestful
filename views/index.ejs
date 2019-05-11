@@ -25,6 +25,7 @@
         <button id="update">영화수정</button>
         <button id="search">영화검색</button>
         <button id="all">전체영화불러오기</button>
+        <button id="">전체영화불러오기</button>
     </div>
     <input type="text" name="searchTitle">
 
@@ -37,16 +38,17 @@
         });
 
         function clickEventHandler(e){
-            let eventId = e.target.id;
             let param = JSON.stringify(getData())
-            switch(eventId){
-                case "all": sendAjax("/movies","GET",null)
-                case "add": sendAjax("/movies","POST",param)
-                case "del": sendAjax("/movies","DEL",param)
+            const URL = "/movies"
+            const title = document.querySelector("#title").value
+            switch( e.target.id){
+                case "all": sendAjax(URL,"GET",null) 
+                case "add": sendAjax(URL,"POST",param)
+                case "del": sendAjax(URL+"/"+title,"DELETE",null)
             }
 
         }
-        function getData(){
+        function getData(type){
             const inputs = document.querySelectorAll("input")
             let obj = {}
             inputs.forEach(function(input){
@@ -57,7 +59,7 @@
         function sendAjax(url,method,param){
             fetch(url,{
                 method:method,
-                headers:{"Content-type":"application/json"},
+                headers:{"Content-type":"application/json;"},
                 body: param
             }).then(res=>res.json()).then(function(data){
                 console.log(data)
