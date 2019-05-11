@@ -88,6 +88,26 @@ router.get("/:title",function(req,res){
 })
 
 
+router.put("/" ,function(req,res){
+    console.log(req.body.title)
+     let obj = {};
+     let sql = {
+         title : req.body.title,
+         actor : req.body.actor,
+         grade : req.body.grade,
+         type : req.body.type
+     }
+     console.log(req.body)
+     let query = connection.query("update movie set actor=? ,grade=? , type=?  where title = ?" , [sql.actor,sql.grade,sql.type,sql.title] ,function(err,rows){
+         console.log(" movie / POST " + JSON.stringify(rows))
+         if(err) throw err
+         else{
+             obj.result="1"
+             obj.data=rows
+             res.json(obj)
+         }
+     })
+ })
 
 
 

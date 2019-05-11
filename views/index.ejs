@@ -28,7 +28,6 @@
         <button id="update">영화수정</button>
         <button id="search">영화검색</button>
         <button id="all">전체영화불러오기</button>
-        <button id="">전체영화불러오기</button>
     </div>
     <input type="text" name="searchTitle">
     <div class="result">
@@ -61,6 +60,7 @@
                 case "add": sendAjax(URL,"POST",param);break;
                 case "del": sendAjax(URL+"/"+title,"DELETE",null);break;
                 case "search":sendAjax(URL+"/"+title,"GET",null);break;
+                case "update": sendAjax(URL,"PUT",param);break;
             }
 
         }
