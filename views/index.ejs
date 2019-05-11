@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>무비무비</title>
+    <style>
+
+    </style>
 </head>
 <body>
     <h1>무비 restul api 연습</h1>
@@ -28,6 +31,17 @@
         <button id="">전체영화불러오기</button>
     </div>
     <input type="text" name="searchTitle">
+    <div class="result">
+        <table >
+            <thead>
+                <th>제목</th>
+                <th>배우</th>
+                <th>평점</th>
+                <th>장르</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
     <script>
         const allBtn = document.querySelector("#all")
@@ -38,13 +52,14 @@
         });
 
         function clickEventHandler(e){
-            let param = JSON.stringify(getData())
+            let param = getData();
             const URL = "/movies"
             const title = document.querySelector("#title").value
+            console.log("param : " ,param)
             switch( e.target.id){
-                case "all": sendAjax(URL,"GET",null) 
-                case "add": sendAjax(URL,"POST",param)
-                case "del": sendAjax(URL+"/"+title,"DELETE",null)
+                case "all": sendAjax(URL,"GET",null); break;
+                case "add": sendAjax(URL,"POST",param);break;
+                case "del": sendAjax(URL+"/"+title,"DELETE",null);break;
             }
 
         }
@@ -57,13 +72,30 @@
             return obj;       
         }
         function sendAjax(url,method,param){
-            fetch(url,{
-                method:method,
-                headers:{"Content-type":"application/json;"},
-                body: param
-            }).then(res=>res.json()).then(function(data){
-                console.log(data)
+            console.log("넘오온 파람은?" + param)
+            let options = {}
+            options.method=method;
+            options.headers={"Content-type":"application/json"};
+            if(param) options.body=JSON.stringify(param)
+        
+        
+            fetch(url, options).then(res=>res.json()).then(function(data){
+                console.log(data)      
             })
+
+            // let xhr = new XMLHttpRequest();
+            // xhr.open(method , url);
+            // xhr.setRequestHeader("Content-Type", "application/json")
+            // xhr.send(JSON.stringify(param))
+            // xhr.addEventListener("load",function(){
+            //     console.log(xhr)
+            // })
+
+
+        }
+        const resultTbody = document.querySelector("tbody")
+        function printResult(obj){
+            console.log("printResult : " , obj)
         }
 
     </script>

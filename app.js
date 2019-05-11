@@ -12,7 +12,10 @@ app.use(express.static('public'))
 app.use(cors())
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:true}))
+
+
 app.use("/",index)
+
 app.listen(3000,function(){
     console.log("-------server start--------")
 })

@@ -5,17 +5,13 @@ var router = express.Router();
 var path = require('path')
 var mysql = require('mysql')
 
-var bodyparser = require('body-parser')
-
-app.use(bodyparser.json())
-app.use(bodyparser.urlencoded({extended:true}))
 
 var connection = mysql.createConnection({
-    host:"yoonjh238.iptime.org",
-    port:63306,
-    user : "root",
-    password : "root",
-    database :"web"
+    host:"localhost",
+    port:3306,
+    user : "hyb",
+    password : "hyb01",
+    database :"com"
 })
 
 connection.connect();
@@ -37,7 +33,7 @@ router.get("/" ,function(req,res){
 
 
 router.post("/" ,function(req,res){
-   
+   console.log(req.body.title)
     let obj = {};
     let sql = {
         title : req.body.title,
@@ -45,7 +41,7 @@ router.post("/" ,function(req,res){
         grade : req.body.grade,
         type : req.body.type
     }
- 
+    console.log(req.body)
     let query = connection.query("INSERT INTO movie SET ?" , sql ,function(err,rows){
         console.log(" movie / POST " + JSON.stringify(rows))
         if(err) throw err
