@@ -9,7 +9,7 @@ router.get("/" ,function(req,res){
     res.render("index.ejs")
 })
 
-router.use("/movie",movie)
+router.use("/movies",movie)
 
 
 

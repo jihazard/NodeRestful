@@ -29,9 +29,40 @@
     <input type="text" name="searchTitle">
 
     <script>
-        const movieList = document.querySelector(".movieList")
+        const allBtn = document.querySelector("#all")
+        const btns= document.querySelectorAll("button") 
         
-        document.querySelector
+        Array.prototype.forEach.call(btns,function(el){
+            el.addEventListener("click",clickEventHandler,false)    
+        });
+
+        function clickEventHandler(e){
+            let eventId = e.target.id;
+            let param = JSON.stringify(getData())
+            switch(eventId){
+                case "all": sendAjax("/movies","GET",null)
+                case "add": sendAjax("/movies","POST",param)
+                case "del": sendAjax("/movies","DEL",param)
+            }
+
+        }
+        function getData(){
+            const inputs = document.querySelectorAll("input")
+            let obj = {}
+            inputs.forEach(function(input){
+                obj[input.id] =input.value
+            })
+            return obj;       
+        }
+        function sendAjax(url,method,param){
+            fetch(url,{
+                method:method,
+                headers:{"Content-type":"application/json"},
+                body: param
+            }).then(res=>res.json()).then(function(data){
+                console.log(data)
+            })
+        }
 
     </script>
 </body>
