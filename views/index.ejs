@@ -97,7 +97,6 @@
         function printResult(obj){
             console.log("printResult : " , obj) 
            var datas = obj.data
-           reset();
            datas.forEach(function(data){
                 paintList(data)
             })
@@ -106,27 +105,26 @@
         const tbody = document.querySelector("tbody");
         
         function paintList(data){
-        const tr = document.createElement("tr")
-        const tdTitle = document.createElement("td") 
-        const tdActor = document.createElement("td") 
-        const tdGrade = document.createElement("td") 
-        const tdType = document.createElement("td") 
-         
-        tdTitle.innerText =data.title;
-        tdActor.innerText = data.actor;
-        tdGrade.innerText = data.grade;
-        tdType.innerText = data.type
+                const tr = document.createElement("tr")
+                const tdTitle = document.createElement("td") 
+                const tdActor = document.createElement("td") 
+                const tdGrade = document.createElement("td") 
+                const tdType = document.createElement("td") 
 
-        tr.appendChild(tdTitle);
-        tr.appendChild(tdActor);
-        tr.appendChild(tdGrade);
-        tr.appendChild(tdType);
+                
+                // Object.keys(data)
+                
+                tdTitle.innerText =data.title;
+                tdActor.innerText = data.actor;
+                tdGrade.innerText = data.grade;
+                tdType.innerText = data.type
 
-        tbody.appendChild(tr)
-        }
+                tr.appendChild(tdTitle);
+                tr.appendChild(tdActor);
+                tr.appendChild(tdGrade);
+                tr.appendChild(tdType);
 
-        function reset(){
-            tbody.innerHTML="";
+                tbody.appendChild(tr)
         }
 
     </script>
