@@ -80,6 +80,7 @@
                 
             fetch(url, options).then(res=>res.json()).then(function(data){
                 console.log(data)      
+                printResult(data)
             })
 
             // let xhr = new XMLHttpRequest();
@@ -94,7 +95,38 @@
         }
         const resultTbody = document.querySelector("tbody")
         function printResult(obj){
-            console.log("printResult : " , obj)
+            console.log("printResult : " , obj) 
+           var datas = obj.data
+           reset();
+           datas.forEach(function(data){
+                paintList(data)
+            })
+            
+        }
+        const tbody = document.querySelector("tbody");
+        
+        function paintList(data){
+        const tr = document.createElement("tr")
+        const tdTitle = document.createElement("td") 
+        const tdActor = document.createElement("td") 
+        const tdGrade = document.createElement("td") 
+        const tdType = document.createElement("td") 
+         
+        tdTitle.innerText =data.title;
+        tdActor.innerText = data.actor;
+        tdGrade.innerText = data.grade;
+        tdType.innerText = data.type
+
+        tr.appendChild(tdTitle);
+        tr.appendChild(tdActor);
+        tr.appendChild(tdGrade);
+        tr.appendChild(tdType);
+
+        tbody.appendChild(tr)
+        }
+
+        function reset(){
+            tbody.innerHTML="";
         }
 
     </script>
